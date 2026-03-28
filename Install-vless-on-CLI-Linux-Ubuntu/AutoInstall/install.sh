@@ -31,9 +31,6 @@ chmod +x main.py
 echo "=== Генерация конфигов Xray ==="
 python3 main.py --url $SUB_URL
 
-echo "=== Генерация конфигов Xray ==="
-python3 main.py --url $SUB_URL
-
 echo "=== Поиск конфигов ==="
 configs=($(ls config*.json))
 
