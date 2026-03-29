@@ -71,6 +71,9 @@ cat <<EOF > /etc/systemd/system/xray-custom.service
 [Unit]
 Description=Xray VPN Client
 After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
 
 [Service]
 Type=simple
@@ -89,6 +92,8 @@ cat <<EOF > /etc/systemd/system/singbox-custom.service
 Description=Sing-box TUN
 After=network.target xray-custom.service
 Requires=xray-custom.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
 
 [Service]
 Type=simple
