@@ -2,7 +2,15 @@
 
 set -e
 
-SUB_URL="$1"
+echo ""
+
+read -p "Введите адрес подписки: " SUB_URL
+
+if [[ -z "$SUB_URL" ]]; then
+    echo "Вы не ввели адрес подписки. Выход."
+    exit 1
+fi
+
 PY_SCRIPT_URL="https://raw.githubusercontent.com/libertyvpn/Libertyvpn-/main/Install-vless-on-CLI-Linux-Ubuntu/AutoInstall/main.py"
 SINGBOX_CONFIG_URL="https://raw.githubusercontent.com/libertyvpn/Libertyvpn-/main/Install-vless-on-CLI-Linux-Ubuntu/AutoInstall/config.json"
 
@@ -77,7 +85,7 @@ StartLimitBurst=5
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/xray -config $XRAY_CONFIG
+ExecStart=/usr/local/bin/xray -config $CONFIG_DIR/active.json
 Restart=on-failure
 RestartSec=3
 
